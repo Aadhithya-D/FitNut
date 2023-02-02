@@ -3,6 +3,9 @@ import 'package:google_mlkit_pose_detection/google_mlkit_pose_detection.dart';
 
 import 'coordinates_translator.dart';
 
+bool up = false;
+int rep = 0;
+
 class PosePainter extends CustomPainter {
   PosePainter(this.poses, this.absoluteImageSize, this.rotation);
 
@@ -50,6 +53,22 @@ class PosePainter extends CustomPainter {
             paintType);
       }
 
+      final k1 = pose.landmarks[PoseLandmarkType.leftShoulder]!;
+      final k2 = pose.landmarks[PoseLandmarkType.leftElbow]!;
+
+      if (translateX(k1.x, rotation, size, absoluteImageSize) >
+          translateX(k2.x, rotation, size, absoluteImageSize)) {
+        up = true;
+        // print("true");
+      }
+      if (translateX(k1.x, rotation, size, absoluteImageSize) <
+              translateX(k2.x, rotation, size, absoluteImageSize) &&
+          up) {
+        rep += 1;
+        print(rep);
+        up = false;
+      }
+      // print(up);
       //Draw arms
       paintLine(
           PoseLandmarkType.leftShoulder, PoseLandmarkType.leftElbow, leftPaint);

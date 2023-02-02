@@ -17,6 +17,8 @@ class _PoseDetectorViewState extends State<PoseDetectorView> {
   bool _isBusy = false;
   CustomPaint? _customPaint;
   String? _text;
+  late final Size absoluteImageSize;
+  late final InputImageRotation rotation;
 
   @override
   void dispose() async {
@@ -45,6 +47,11 @@ class _PoseDetectorViewState extends State<PoseDetectorView> {
       _text = '';
     });
     final poses = await _poseDetector.processImage(inputImage);
+    // print(poses[0].landmarks);
+    // final k1 = poses[0].landmarks[PoseLandmarkType.leftShoulder]!;
+    // final k2 = poses[0].landmarks[PoseLandmarkType.leftElbow]!;
+    // final sX = translateX(k1.x, rotation, size, absoluteImageSize);
+
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
       final painter = PosePainter(poses, inputImage.inputImageData!.size,
