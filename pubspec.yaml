@@ -46,6 +46,9 @@ dependencies:
   flutter_vector_icons: ^2.0.0
   google_mlkit_pose_detection:
   camera: ^0.10.3
+  get: ^4.6.5
+  slide_to_act: ^2.0.1
+  confetti: ^0.7.0
 
 dev_dependencies:
   flutter_test:

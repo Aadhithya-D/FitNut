@@ -19,6 +19,8 @@ class _RegisterPageState extends State<RegisterPage> {
   // text editing controllers
   final nameController = TextEditingController();
   final emailController = TextEditingController();
+  final heightController = TextEditingController();
+  final weightController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
@@ -49,7 +51,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       .doc(value.user?.uid)
                       .set({
                     "name": nameController.text,
-                    "email": value.user?.email
+                    "email": value.user?.email,
+                    "score": 0,
+                    "height": int.parse(heightController.text),
+                    "weight": int.parse(weightController.text),
+                    "bmi": int.parse(weightController.text) /
+                        (int.parse(heightController.text) *
+                            0.01 *
+                            int.parse(heightController.text) *
+                            0.01)
                   })
                 });
       } else {
@@ -125,6 +135,24 @@ class _RegisterPageState extends State<RegisterPage> {
                 MyTextField(
                   controller: emailController,
                   hintText: 'Email',
+                  obscureText: false,
+                ),
+
+                const SizedBox(height: 10),
+
+                // password textfield
+                MyTextField(
+                  controller: heightController,
+                  hintText: 'Height',
+                  obscureText: false,
+                ),
+
+                const SizedBox(height: 10),
+
+                // password textfield
+                MyTextField(
+                  controller: weightController,
+                  hintText: 'Weight',
                   obscureText: false,
                 ),
 

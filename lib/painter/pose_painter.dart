@@ -1,4 +1,6 @@
+import 'package:fitnut/controllers/rep_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_mlkit_pose_detection/google_mlkit_pose_detection.dart';
 
 import 'coordinates_translator.dart';
@@ -7,11 +9,13 @@ bool up = false;
 int rep = 0;
 
 class PosePainter extends CustomPainter {
-  PosePainter(this.poses, this.absoluteImageSize, this.rotation);
+  PosePainter(this.poses, this.absoluteImageSize, this.rotation, this.workout);
 
   final List<Pose> poses;
   final Size absoluteImageSize;
   final InputImageRotation rotation;
+  final RepController repController = Get.put(RepController());
+  final workout;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -53,22 +57,41 @@ class PosePainter extends CustomPainter {
             paintType);
       }
 
-      final k1 = pose.landmarks[PoseLandmarkType.leftShoulder]!;
-      final k2 = pose.landmarks[PoseLandmarkType.leftElbow]!;
-
-      if (translateX(k1.x, rotation, size, absoluteImageSize) >
-          translateX(k2.x, rotation, size, absoluteImageSize)) {
-        up = true;
-        // print("true");
+      if (workout == "Push Up") {
+        final k1 = pose.landmarks[PoseLandmarkType.leftShoulder]!;
+        final k2 = pose.landmarks[PoseLandmarkType.leftElbow]!;
+        print(workout);
+        if (translateX(k1.x, rotation, size, absoluteImageSize) >
+            translateX(k2.x, rotation, size, absoluteImageSize)) {
+          up = true;
+          // print("true");
+        }
+        if (translateX(k1.x, rotation, size, absoluteImageSize) <
+                translateX(k2.x, rotation, size, absoluteImageSize) &&
+            up) {
+          RepController.rep[1]++;
+          up = false;
+        }
+      } else if (workout == "Squat") {
+        final k1 = pose.landmarks[PoseLandmarkType.rightHip]!;
+        final k2 = pose.landmarks[PoseLandmarkType.rightKnee]!;
+        final k3 = pose.landmarks[PoseLandmarkType.leftHip]!;
+        final k4 = pose.landmarks[PoseLandmarkType.leftKnee]!;
+        if (translateX(k1.x, rotation, size, absoluteImageSize) - 50 >
+                translateX(k2.x, rotation, size, absoluteImageSize) &&
+            translateX(k3.x, rotation, size, absoluteImageSize) - 50 >
+                translateX(k4.x, rotation, size, absoluteImageSize)) {
+          up = true;
+        }
+        if (translateX(k1.x, rotation, size, absoluteImageSize) - 50 <
+                translateX(k2.x, rotation, size, absoluteImageSize) &&
+            translateX(k3.x, rotation, size, absoluteImageSize) - 50 <
+                translateX(k4.x, rotation, size, absoluteImageSize) &&
+            up) {
+          RepController.rep[0]++;
+          up = false;
+        }
       }
-      if (translateX(k1.x, rotation, size, absoluteImageSize) <
-              translateX(k2.x, rotation, size, absoluteImageSize) &&
-          up) {
-        rep += 1;
-        print(rep);
-        up = false;
-      }
-      // print(up);
       //Draw arms
       paintLine(
           PoseLandmarkType.leftShoulder, PoseLandmarkType.leftElbow, leftPaint);

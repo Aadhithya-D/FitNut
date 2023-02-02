@@ -1,20 +1,26 @@
 import 'dart:io';
 
 import 'package:camera/camera.dart';
+import 'package:fitnut/screens/after_workout_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mlkit_commons/google_mlkit_commons.dart';
+import 'package:slide_to_act/slide_to_act.dart';
 
+import '../controllers/rep_controller.dart';
 import '../main.dart';
 
 enum ScreenMode { liveFeed, gallery }
 
 class CameraView extends StatefulWidget {
-  CameraView(
+  const CameraView(
       {Key? key,
       required this.title,
       required this.customPaint,
       this.text,
+      this.workout,
       required this.onImage,
       this.onScreenModeChanged,
       this.initialDirection = CameraLensDirection.back})
@@ -26,6 +32,7 @@ class CameraView extends StatefulWidget {
   final Function(InputImage inputImage) onImage;
   final Function(ScreenMode mode)? onScreenModeChanged;
   final CameraLensDirection initialDirection;
+  final workout;
 
   @override
   State<CameraView> createState() => _CameraViewState();
@@ -40,11 +47,16 @@ class _CameraViewState extends State<CameraView> {
   double zoomLevel = 0.0, minZoomLevel = 0.0, maxZoomLevel = 0.0;
   final bool _allowPicker = true;
   bool _changingCameraLens = false;
+  final RepController repController = Get.put(RepController());
+
+  var rotation = 0;
 
   @override
   void initState() {
+    if (widget.workout == "Push Up") {
+      rotation = 1;
+    }
     super.initState();
-
     if (cameras.any(
       (element) =>
           element.lensDirection == widget.initialDirection &&
@@ -125,7 +137,7 @@ class _CameraViewState extends State<CameraView> {
 
     // to prevent scaling down, invert the value
     if (scale < 1) scale = 1 / scale;
-
+    void submit() {}
     return Container(
       color: Colors.black,
       child: Stack(
@@ -142,25 +154,46 @@ class _CameraViewState extends State<CameraView> {
             ),
           ),
           if (widget.customPaint != null) widget.customPaint!,
-          // Positioned(
-          //   bottom: 100,
-          //   left: 50,
-          //   right: 50,
-          //   child: Slider(
-          //     value: zoomLevel,
-          //     min: minZoomLevel,
-          //     max: maxZoomLevel,
-          //     onChanged: (newSliderValue) {
-          //       setState(() {
-          //         zoomLevel = newSliderValue;
-          //         _controller!.setZoomLevel(zoomLevel);
-          //       });
-          //     },
-          //     divisions: (maxZoomLevel - 1).toInt() < 1
-          //         ? null
-          //         : (maxZoomLevel - 1).toInt(),
-          //   ),
-          // )
+          Positioned(
+              bottom: 100,
+              left: 40,
+              right: 40,
+              child: SlideAction(
+                onSubmit: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AfterWorkoutScreen(
+                                rep: RepController.rep[rotation],
+                                workout: widget.workout,
+                              )));
+                  // RepController.rep[rotation] = 0;
+                },
+                borderRadius: 20,
+                outerColor: const Color(0xFF00ADB5),
+                text: "Slide to End",
+              )),
+          Positioned(
+              top: 50,
+              right: 20,
+              child: Container(
+                height: 75,
+                width: 75,
+                decoration: BoxDecoration(
+                  color: const Color(0xFF00ADB5),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(
+                  child: RotatedBox(
+                    quarterTurns: rotation,
+                    child: Text(
+                      "${RepController.rep[rotation]}",
+                      style: GoogleFonts.oswald(
+                          fontSize: 25, color: const Color(0xFFEEEEEE)),
+                    ),
+                  ),
+                ),
+              ))
         ],
       ),
     );

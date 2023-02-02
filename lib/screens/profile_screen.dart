@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'auth_page.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -8,6 +10,16 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    void signUserOut() {
+      FirebaseAuth.instance.signOut();
+      Navigator.pop(context);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const AuthPage(),
+          ));
+    }
+
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -135,14 +147,15 @@ class ProfileScreen extends StatelessWidget {
                               ),
                             ),
                             Positioned(
-                              top: 110,
-                              right: 20,
-                              child: Icon(
-                                AntDesign.setting,
-                                color: Colors.grey[700],
-                                size: 30,
-                              ),
-                            ),
+                                top: 110,
+                                right: 20,
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.logout,
+                                    color: Color(0xFFEEEEEE),
+                                  ),
+                                  onPressed: signUserOut,
+                                )),
                             const Positioned(
                               top: 0,
                               left: 0,
