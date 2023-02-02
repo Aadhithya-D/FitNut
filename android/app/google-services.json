@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "218691982421",
+    "project_id": "fitnut2",
+    "storage_bucket": "fitnut2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218691982421:android:aec8cab76e1018be4330dc",
+        "android_client_info": {
+          "package_name": "com.example.fitnut"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "218691982421-jgifc7r1em0umpbd37ggc3t8cj54jkhs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCDtJlzicOp-w0ZXx0H5BRTAZuNi5kHzs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "218691982421-jgifc7r1em0umpbd37ggc3t8cj54jkhs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

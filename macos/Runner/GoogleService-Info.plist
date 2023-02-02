@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>218691982421-dco3a3dodtlng1c55hh4ko0igc1dht8o.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.218691982421-dco3a3dodtlng1c55hh4ko0igc1dht8o</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCtMhDV7Hz0H_CXwu1qwSD7HijJ2sgMD9s</string>
+	<key>GCM_SENDER_ID</key>
+	<string>218691982421</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.fitnut</string>
+	<key>PROJECT_ID</key>
+	<string>fitnut2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fitnut2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:218691982421:ios:79afd3bdd70b23e64330dc</string>
+</dict>
+</plist>
