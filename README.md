@@ -1,4 +1,4 @@
-# fitnut
+# FitNut
 
 A new Flutter project.
 
