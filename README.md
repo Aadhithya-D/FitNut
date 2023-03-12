@@ -29,4 +29,4 @@ This project is a fitness application that uses Flutter, a mobile application de
 - A few resources to get you started if this is your first Flutter project:
 
 ## Contributors
-This project was created by [Aadhithya D](https://github.com/Aadhithya-D), [Adithya S](https://github.com/Adithya-Sakaray), [Thiruvikraman A](https://github.com/Thiruvikraman07), Sanjaii Vijayakumar. If you would like to contribute to this project, feel free to fork the repository and submit a pull request.
+This project was created by [Aadhithya D](https://github.com/Aadhithya-D), [Adithya S](https://github.com/Adithya-Sakaray), [Thiruvikraman A](https://github.com/Thiruvikraman07), [Sanjaii Vijayakumar](https://github.com/sanjaiiv04). If you would like to contribute to this project, feel free to fork the repository and submit a pull request.
