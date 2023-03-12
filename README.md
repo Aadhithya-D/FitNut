@@ -1,6 +1,6 @@
 # FitNut
 
-A new Flutter project.
+Developed a fitness application using Flutter, integrating Google's MLKit for accurate pose detection. The app accurately detects and counts reps during workouts, assigns a score based on performance, and updates a leaderboard for users to compete with friends and stay motivated.
 
 ## Getting Started
 
