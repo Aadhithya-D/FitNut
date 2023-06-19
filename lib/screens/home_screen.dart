@@ -11,19 +11,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   centerTitle: true,
-      //   toolbarHeight: 60.0,
-      //   title: Text(
-      //     "FITNUT",
-      //     style: GoogleFonts.oswald(
-      //         fontSize: 30,
-      //         fontWeight: FontWeight.bold,
-      //         color: const Color(0xFFEEEEEE)),
-      //   ),
-      //   backgroundColor: const Color(0xFF222831),
-      //   elevation: 0,
-      // ),
       backgroundColor: const Color(0xFF222831),
       body: SingleChildScrollView(
         child: Padding(
@@ -60,7 +47,8 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => PoseDetectorView()));
+                                builder: (context) =>
+                                    PoseDetectorView("Push Up")));
                       },
                       child: const Padding(
                         padding: EdgeInsets.only(right: 8.0),
@@ -69,9 +57,18 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(right: 8.0),
-                      child: WorkoutIcon(image: "lib/images/squat.png"),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    PoseDetectorView("Squat")));
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.only(right: 8.0),
+                        child: WorkoutIcon(image: "lib/images/squat.png"),
+                      ),
                     ),
                     const Padding(
                       padding: EdgeInsets.only(right: 8.0),
@@ -109,23 +106,23 @@ class HomeScreen extends StatelessWidget {
                   children: const [
                     Padding(
                       padding: EdgeInsets.only(right: 8.0),
-                      child: WorkoutIcon(image: "lib/images/push-up.png"),
+                      child: WorkoutIcon(image: "lib/images/cobra.png"),
                     ),
                     Padding(
                       padding: EdgeInsets.only(right: 8.0),
-                      child: WorkoutIcon(image: "lib/images/push-up.png"),
+                      child: WorkoutIcon(image: "lib/images/worrier.png"),
                     ),
                     Padding(
                       padding: EdgeInsets.only(right: 8.0),
-                      child: WorkoutIcon(image: "lib/images/push-up.png"),
+                      child: WorkoutIcon(image: "lib/images/goddess.png"),
                     ),
                     Padding(
                       padding: EdgeInsets.only(right: 8.0),
-                      child: WorkoutIcon(image: "lib/images/push-up.png"),
+                      child: WorkoutIcon(image: "lib/images/crow.png"),
                     ),
                     Padding(
                       padding: EdgeInsets.only(right: 8.0),
-                      child: WorkoutIcon(image: "lib/images/push-up.png"),
+                      child: WorkoutIcon(image: "lib/images/corpse.png"),
                     ),
                   ],
                 ),

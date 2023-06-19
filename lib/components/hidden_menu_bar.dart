@@ -1,4 +1,5 @@
 import 'package:fitnut/screens/home_screen.dart';
+import 'package:fitnut/screens/leaderboard.dart';
 import 'package:fitnut/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,6 +31,17 @@ class _HiddenMenuState extends State<HiddenMenu> {
                 color: const Color(0xFFEEEEEE)),
           ),
           const HomeScreen()),
+      ScreenHiddenDrawer(
+          ItemHiddenMenu(
+            name: "Leaderboard",
+            baseStyle: GoogleFonts.oswald(
+                fontSize: 20, color: const Color(0xFFEEEEEE)),
+            selectedStyle: GoogleFonts.oswald(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xFFEEEEEE)),
+          ),
+          LeaderboardScreen()),
       ScreenHiddenDrawer(
           ItemHiddenMenu(
             name: "Profile",

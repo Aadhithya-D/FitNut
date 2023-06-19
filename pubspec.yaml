@@ -46,10 +46,19 @@ dependencies:
   flutter_vector_icons: ^2.0.0
   google_mlkit_pose_detection:
   camera: ^0.10.3
+  get: ^4.6.5
+  slide_to_act: ^2.0.1
+  confetti: ^0.7.0
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.11.0
+
+flutter_icons:
+  android: true
+  image_path: "lib/images/App_icon.jpg"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

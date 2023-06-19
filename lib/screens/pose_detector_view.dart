@@ -6,6 +6,8 @@ import 'package:google_mlkit_pose_detection/google_mlkit_pose_detection.dart';
 import 'camera_view.dart';
 
 class PoseDetectorView extends StatefulWidget {
+  PoseDetectorView(this.workout);
+  late final workout;
   @override
   State<StatefulWidget> createState() => _PoseDetectorViewState();
 }
@@ -17,6 +19,8 @@ class _PoseDetectorViewState extends State<PoseDetectorView> {
   bool _isBusy = false;
   CustomPaint? _customPaint;
   String? _text;
+  late final Size absoluteImageSize;
+  late final InputImageRotation rotation;
 
   @override
   void dispose() async {
@@ -34,6 +38,7 @@ class _PoseDetectorViewState extends State<PoseDetectorView> {
       onImage: (inputImage) {
         processImage(inputImage);
       },
+      workout: widget.workout,
     );
   }
 
@@ -45,10 +50,15 @@ class _PoseDetectorViewState extends State<PoseDetectorView> {
       _text = '';
     });
     final poses = await _poseDetector.processImage(inputImage);
+    // print(poses[0].landmarks);
+    // final k1 = poses[0].landmarks[PoseLandmarkType.leftShoulder]!;
+    // final k2 = poses[0].landmarks[PoseLandmarkType.leftElbow]!;
+    // final sX = translateX(k1.x, rotation, size, absoluteImageSize);
+
     if (inputImage.inputImageData?.size != null &&
         inputImage.inputImageData?.imageRotation != null) {
       final painter = PosePainter(poses, inputImage.inputImageData!.size,
-          inputImage.inputImageData!.imageRotation);
+          inputImage.inputImageData!.imageRotation, widget.workout);
       _customPaint = CustomPaint(painter: painter);
     } else {
       _text = 'Poses found: ${poses.length}\n\n';
