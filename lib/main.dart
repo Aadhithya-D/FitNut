@@ -20,11 +20,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ThemeData();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          colorScheme: const ColorScheme.light()
-              .copyWith(primary: const Color(0xFF71C9CE))),
+      theme: theme.copyWith(colorScheme: const ColorScheme.light()
+          .copyWith(primary: const Color(0xFF71C9CE))),
       home: const AuthPage(),
     );
   }
