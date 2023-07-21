@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_mlkit_commons/google_mlkit_commons.dart';
-import 'package:slide_to_act/slide_to_act.dart';
 
 import '../controllers/rep_controller.dart';
 import '../main.dart';
@@ -156,10 +155,10 @@ class _CameraViewState extends State<CameraView> {
           if (widget.customPaint != null) widget.customPaint!,
           Positioned(
               bottom: 100,
-              left: 40,
-              right: 40,
-              child: SlideAction(
-                onSubmit: () {
+              left: 120,
+              right: 120,
+              child: GestureDetector(
+                onTap: () {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -169,9 +168,14 @@ class _CameraViewState extends State<CameraView> {
                               )));
                   // RepController.rep[rotation] = 0;
                 },
-                borderRadius: 20,
-                outerColor: const Color(0xFF00ADB5),
-                text: "Slide to End",
+                child: Container(
+                  height: 50,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: const Color(0xFF00ADB5),),
+                  child: Center(child: Text("Tap to End", style: TextStyle(color: Colors.white, fontSize: 20),)),
+                ),
               )),
           Positioned(
               top: 50,
