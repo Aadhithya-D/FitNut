@@ -45,20 +45,19 @@ dependencies:
   hidden_drawer_menu: ^3.0.1
   flutter_vector_icons: ^2.0.0
   google_mlkit_pose_detection:
-  camera: ^0.10.3
+  camera: ^0.10.5+2
   get: ^4.6.5
-  slide_to_act: ^2.0.1
   confetti: ^0.7.0
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.11.0
+  flutter_launcher_icons: ^0.13.1
 
 flutter_icons:
   android: true
-  image_path: "lib/images/App_icon.jpg"
+  image_path: "lib/images/App_icon.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -69,7 +68,6 @@ flutter_icons:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter packages.
 flutter:
 
@@ -81,6 +79,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/images/
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
