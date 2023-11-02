@@ -2,6 +2,11 @@
 
 This project is a fitness application that uses Flutter, a mobile application development framework, and Google's MLKit to accurately detect and count reps during workouts, assign a score based on performance, and update a leaderboard for users to compete with friends and stay motivated.
 
+<p float="left">
+  <img src="1.jpg" width="33%" />
+  <img src="2.jpg" width="33%" />
+</p>
+
 ## Requirements
 
 - Flutter SDK
